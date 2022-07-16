@@ -219,6 +219,12 @@ jobs:
       #    echo "Post-build files:"
       #    ls -R
       #    echo "-- Post-build files -- "
+      
+      - name: Show disk usage (1)
+        if: always()
+        shell: bash
+        run:   |
+          wmic logicaldisk
 
       - uses: Silverlan/common_actions/build_cmake@main
         name: CMake Build
@@ -240,6 +246,12 @@ jobs:
             #echo "--ALL FILES END--"
             # cp ./build/third_party_libs/libpng/pnglibconf.h ./third_party_libs/libpng/pnglibconf.h
             # cp ./build/third_party_libs/zlib/zconf.h ./third_party_libs/zlib/zconf.h
+            
+      - name: Show disk usage (2)
+        if: always()
+        shell: bash
+        run:   |
+          wmic logicaldisk
             
       - name: Run test
         shell: bash
