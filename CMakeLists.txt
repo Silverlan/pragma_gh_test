@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 3.8)
 project(pragma)
 
-if(WIN32)
-	set(CONFIG_BUILD_TYPE "RelWithDebInfo" CACHE STRING "Build Type")
-else()
-	set(CONFIG_BUILD_TYPE "Release" CACHE STRING "Build Type")
-endif()
+#if(WIN32)
+#	set(CONFIG_BUILD_TYPE "RelWithDebInfo" CACHE STRING "Build Type")
+#else()
+#	set(CONFIG_BUILD_TYPE "Release" CACHE STRING "Build Type")
+#endif()
+set(CONFIG_BUILD_TYPE "Release" CACHE STRING "Build Type")
 set_property(CACHE CONFIG_BUILD_TYPE PROPERTY STRINGS RelWithDebInfo Release Debug)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
