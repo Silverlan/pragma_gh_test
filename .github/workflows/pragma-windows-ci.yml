@@ -50,8 +50,6 @@ jobs:
                   }
               }
           
-          
-          
 
       - name: Setup
         id: setup
@@ -263,6 +261,13 @@ jobs:
                         $i.FullName + " -- " + "{0:N2}" -f $size + " MB"
                   }
               }
+              
+      - name: Clear files
+        if: always()
+        shell: bash
+        run:   |
+          rm -rf "third_party_libs/boost/bin.v2/libs/math/build/msvc-14.3/release/link-static/threading-multi"
+          rm -rf "third_party_libs/boost/bin.v2/libs/math/build/msvc-14.3/release/threading-multi"
 
       - uses: Silverlan/common_actions/build_cmake@main
         name: CMake Build
@@ -284,6 +289,13 @@ jobs:
             #echo "--ALL FILES END--"
             # cp ./build/third_party_libs/libpng/pnglibconf.h ./third_party_libs/libpng/pnglibconf.h
             # cp ./build/third_party_libs/zlib/zconf.h ./third_party_libs/zlib/zconf.h
+            
+      - name: Clear files (2)
+        if: always()
+        shell: bash
+        run:   |
+          rm -rf "external_libs/util_image/third_party_libs/nvtt"
+          rm -rf "install/addons/filmmaker/lua"
             
       - name: Powershell list files (2)
         shell: pwsh
