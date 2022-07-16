@@ -36,7 +36,7 @@ jobs:
       - name: Powershell list files (0)
         shell: pwsh
         run: |
-          $colItems = (Get-ChildItem $startFolder -recurse -Force | Where-Object {$_.PSIsContainer -eq $True} | Sort-Object)
+          $colItems = (Get-ChildItem $startFolder -recurse -ErrorAction SilentlyContinue | Where-Object {$_.PSIsContainer -eq $True} | Sort-Object)
           foreach ($i in $colItems)
               {
                   $subFolderItems = (Get-ChildItem $i.FullName | Measure-Object -property length -sum)
@@ -247,7 +247,7 @@ jobs:
       - name: Powershell list files (1)
         shell: pwsh
         run: |
-          $colItems = (Get-ChildItem $startFolder -recurse -Force | Where-Object {$_.PSIsContainer -eq $True} | Sort-Object)
+          $colItems = (Get-ChildItem $startFolder -recurse -ErrorAction SilentlyContinue | Where-Object {$_.PSIsContainer -eq $True} | Sort-Object)
           foreach ($i in $colItems)
               {
                   $subFolderItems = (Get-ChildItem $i.FullName | Measure-Object -property length -sum)
@@ -282,7 +282,7 @@ jobs:
       - name: Powershell list files (2)
         shell: pwsh
         run: |
-          $colItems = (Get-ChildItem $startFolder -recurse -Force | Where-Object {$_.PSIsContainer -eq $True} | Sort-Object)
+          $colItems = (Get-ChildItem $startFolder -recurse -ErrorAction SilentlyContinue | Where-Object {$_.PSIsContainer -eq $True} | Sort-Object)
           foreach ($i in $colItems)
               {
                   $subFolderItems = (Get-ChildItem $i.FullName | Measure-Object -property length -sum)
